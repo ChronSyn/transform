@@ -14,7 +14,7 @@ index 1c2c709..ccc647b 100644
  exports.format = format;
  //# sourceMappingURL=formatter.js.map
 diff --git a/node_modules/json-schema-to-typescript/dist/src/index.js b/node_modules/json-schema-to-typescript/dist/src/index.js
-index 106f6df..d235ae7 100644
+index 068d6dc..b7c5ac9 100644
 --- a/node_modules/json-schema-to-typescript/dist/src/index.js
 +++ b/node_modules/json-schema-to-typescript/dist/src/index.js
 @@ -59,9 +59,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
@@ -27,14 +27,18 @@ index 106f6df..d235ae7 100644
  var formatter_1 = require("./formatter");
  var generator_1 = require("./generator");
  var normalizer_1 = require("./normalizer");
-@@ -87,13 +85,7 @@ exports.DEFAULT_OPTIONS = {
-     unreachableDefinitions: false,
-     $refOptions: {}
+@@ -88,17 +86,7 @@ exports.DEFAULT_OPTIONS = {
+     },
+     unreachableDefinitions: false
  };
 -function compileFromFile(filename, options) {
 -    if (options === void 0) { options = exports.DEFAULT_OPTIONS; }
--    var contents = utils_1.Try(function () { return fs_1.readFileSync(filename); }, function () { throw new ReferenceError("Unable to read file \"" + filename + "\""); });
--    var schema = utils_1.Try(function () { return JSON.parse(contents.toString()); }, function () { throw new TypeError("Error parsing JSON in file \"" + filename + "\""); });
+-    var contents = utils_1.Try(function () { return fs_1.readFileSync(filename); }, function () {
+-        throw new ReferenceError("Unable to read file \"" + filename + "\"");
+-    });
+-    var schema = utils_1.Try(function () { return JSON.parse(contents.toString()); }, function () {
+-        throw new TypeError("Error parsing JSON in file \"" + filename + "\"");
+-    });
 -    return compile(schema, utils_1.stripExtension(filename), __assign({ cwd: path_1.dirname(filename) }, options));
 -}
 -exports.compileFromFile = compileFromFile;

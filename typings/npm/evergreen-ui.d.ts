@@ -56,6 +56,14 @@ declare module "evergreen-ui" {
         description?: string;
       }
     ) => void;
+    danger: (
+      text: string,
+      options?: {
+        id?: string | number;
+        duration?: number;
+        description?: string;
+      }
+    ) => void;
     closeAll: () => void;
   };
 
@@ -92,7 +100,7 @@ declare module "evergreen-ui" {
   type TextSize = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
   export interface HeadingProps extends EnhancerProps {
-    size: TextSize;
+    size?: TextSize;
     is?: string;
     onClick?: () => void;
   }
@@ -247,6 +255,8 @@ declare module "evergreen-ui" {
   export interface SelectProps extends EnhancerProps {
     value: string;
     onChange: (e) => void;
+    name?: string;
+    defaultValue?: string | number;
   }
 
   export class Select extends React.PureComponent<SelectProps> {}

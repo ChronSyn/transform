@@ -6,22 +6,17 @@ import { Alert } from "evergreen-ui";
 
 export default function() {
   const transformer = useCallback(
-    ({ value }) =>
-      request("/api/flow-to-typescript", {
-        value,
-        declarationOnly: false
-      }),
+    ({ value }) => request("/api/typescript-to-flow", value),
     []
   );
 
   return (
     <ConversionPanel
       transformer={transformer}
-      editorTitle="Flow"
-      editorLanguage="plaintext"
-      editorDefaultValue="flow"
-      resultTitle="TypeScript"
-      resultLanguage={"typescript"}
+      editorTitle="TypeScript"
+      editorLanguage="typescript"
+      resultTitle="Flow"
+      resultLanguage={"plaintext"}
       resultEditorProps={{
         topNotifications: () => (
           <Alert
